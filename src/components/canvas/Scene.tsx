@@ -20,6 +20,7 @@ export function Scene() {
                 enterOnly={true}
                 exitOnly={true}
             /> */}
+            <ARButton />
             <Canvas>
                 <ARScreen />
             </Canvas>
