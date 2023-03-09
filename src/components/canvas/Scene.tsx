@@ -20,7 +20,19 @@ export function Scene() {
                 enterOnly={true}
                 exitOnly={true}
             /> */}
-            <ARButton />
+            <ARButton
+                style={{
+                    position: 'absolute',
+                    zIndex: '99999',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '200px',
+                    height: '40px',
+                    borderRadius: '20px',
+                    border: '2px solid #ccc',
+                }}
+            />
             <Canvas>
                 <ARScreen />
             </Canvas>
