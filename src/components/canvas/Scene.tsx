@@ -8,9 +8,7 @@ export function Scene() {
         <>
             <ARButton />
             <Canvas>
-                <Suspense>
-                    <ARScreen />
-                </Suspense>
+                <ARScreen />
             </Canvas>
         </>
     )

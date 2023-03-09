@@ -10,9 +10,10 @@ export function Button({ ...props }) {
         setColor((Math.random() * 0xffffff) | 0)
     }
 
-    useEffect(() => {
-        console.log(props)
-    }, [])
+    // useEffect(() => {
+    //     console.log(props)
+    // }, [])
+
     return (
         <>
             <Interactive
