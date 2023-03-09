@@ -44,7 +44,7 @@ export function Model() {
 
     return (
         <>
-            <primitive object={scene} scale={0.1} />
+            <primitive object={scene} scale={0.01} />
             {/* <primitive object={scene} /> */}
         </>
     )
