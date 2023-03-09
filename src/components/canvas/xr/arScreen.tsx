@@ -9,8 +9,9 @@ export function ARScreen() {
             <XR referenceSpace="local">
                 <ambientLight />
                 <pointLight position={[10, 10, 10]} />
-                {/* <Button /> */}
-                <Model />
+                <Button />
+                {/* <Model /> */}
+
                 <Controllers />
             </XR>
         </>
