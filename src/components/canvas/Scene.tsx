@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { ARButton } from '@react-three/xr'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { ARScreen } from './xr/arScreen'
 
 export function Scene() {
@@ -8,7 +8,9 @@ export function Scene() {
         <>
             <ARButton />
             <Canvas>
-                <ARScreen />
+                <Suspense fallback={null}>
+                    <ARScreen />
+                </Suspense>
             </Canvas>
         </>
     )
