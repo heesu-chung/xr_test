@@ -1,6 +1,6 @@
 import { Text } from '@react-three/drei'
 import { Interactive } from '@react-three/xr'
-import { Suspense, useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 
 export function Button({ ...props }) {
     const [hover, setHover] = useState(false)
