@@ -3,9 +3,9 @@ import { useLayoutEffect } from 'react'
 import { MeshPhysicalMaterial } from 'three'
 
 export function Model() {
-    const { scene } = useGLTF('/gltf/city.glb')
+    // const { scene } = useGLTF('/gltf/city.glb')
     // const { scene } = useGLTF('/gltf/iphone_13_pro.glb') // simple geometry with texture
-    // const { scene } = useGLTF('/gltf/nike_air.glb'); // complex geometry with texture
+    const { scene } = useGLTF('/gltf/nike_air.glb') // complex geometry with texture
     // const { scene } = useGLTF('/gltf/smart_watch.glb') // low-quality
 
     useLayoutEffect(() => {
@@ -44,7 +44,8 @@ export function Model() {
 
     return (
         <>
-            <primitive object={scene} scale={0.1} />
+            {/* <primitive object={scene} scale={0.1} /> */}
+            <primitive object={scene} />
         </>
     )
 }
