@@ -61,7 +61,7 @@ export function Scene() {
                     AR for Android
                 </ARButton>
             )}
-            {
+            {userAgent === 'iOS' && (
                 <a href={usdz} rel="ar" target="_blank">
                     <button
                         ref={usdzClickRef}
@@ -80,7 +80,7 @@ export function Scene() {
                         AR for iOS
                     </button>
                 </a>
-            }
+            )}
 
             <Canvas>
                 <ARScreen setUsdz={setUsdz} />
