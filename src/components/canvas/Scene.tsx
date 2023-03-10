@@ -11,8 +11,8 @@ export function Scene() {
     const usdzClickRef = useRef<HTMLAnchorElement>(null!)
 
     useEffect(() => {
-        arClickRef.current.click()
-        // usdzClickRef.current.click()
+        // arClickRef.current.click()
+        usdzClickRef.current.click()
     }, [])
 
     return (
@@ -29,6 +29,7 @@ export function Scene() {
                 enterOnly={true}
                 exitOnly={true}
             /> */}
+
             <ARButton
                 ref={arClickRef}
                 style={{
@@ -43,7 +44,7 @@ export function Scene() {
                     border: '2px solid #ccc',
                 }}
             />
-            {/* <img src="/usdz/Smart_Watch_KW_19.usdz" alt="" /> */}
+
             <a
                 ref={usdzClickRef}
                 href="/usdz/Smart_Watch_KW_19.usdz"
@@ -53,9 +54,9 @@ export function Scene() {
                 USDZ File
             </a>
 
-            {/* <Canvas>
+            <Canvas>
                 <ARScreen />
-            </Canvas> */}
+            </Canvas>
         </>
     )
 }
