@@ -41,7 +41,7 @@ export function Model({ setUsdz }: ModelProps) {
         console.log(url)
 
         const newUsdz = url
-        setUsdz(url)
+        // setUsdz(url)
     }
 
     useLayoutEffect(() => {
