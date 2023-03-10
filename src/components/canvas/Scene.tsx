@@ -10,7 +10,7 @@ import { USDZExporter } from 'three-stdlib'
 export function Scene() {
     const arClickRef = useRef<HTMLButtonElement>(null!)
     const usdzClickRef = useRef<HTMLButtonElement>(null!)
-    const [usdz, setUsdz] = useState('/usdz/Smart_Watch_KW_19.usdz')
+    const [usdz, setUsdz] = useState('/usdz/usdzExport.usdz')
     // const [usdz, setUsdz] = useState('')
     const [userAgent, setUserAgent] = useState('')
 

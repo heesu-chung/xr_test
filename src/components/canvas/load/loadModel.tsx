@@ -29,10 +29,12 @@ export function Model({ setUsdz }: ModelProps) {
         const a = document.createElement('a')
         a.setAttribute('download', 'usdzExport.usdz')
         a.setAttribute('rel', 'ar')
-        a.setAttribute('target', '_blank')
+        a.setAttribute('target', '_self')
         a.setAttribute('href', url)
 
-        a.click()
+        // a.click()
+
+        // localStorage.setItem('usdzExport.usdz', url)
 
         console.log(arraybuffer)
         console.log(usdz)
