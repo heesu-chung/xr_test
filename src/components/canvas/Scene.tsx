@@ -55,7 +55,7 @@ export function Scene() {
                     <ARButton ref={usdzClickRef} className={styles.btn}>
                         AR for iOs
                     </ARButton>
-                    {<a href={usdz} rel="ar" target="_blank"></a>}
+                    <a href={usdz} rel="ar" target="_blank"></a>
                 </>
             )}
             {userAgent === 'other' && (
@@ -67,7 +67,7 @@ export function Scene() {
                     Not for AR features
                 </button>
             )}
-            {btnClicked && (
+            {btnClicked && userAgent === 'android' && (
                 <Canvas>
                     <ARScreen setUsdz={setUsdz} />
                 </Canvas>
@@ -75,14 +75,3 @@ export function Scene() {
         </>
     )
 }
-
-// function USDZModel () {
-//     const { scene } = useThree();
-//     const exporter = new USDZExporter();
-//     exporter.parse(scene, function(usedz) {
-//         const blob = new Blob([usdz], { type: 'model/vnd.usdz+zip'});
-//         const link = document.createElement('a');
-//         link.href = URL.createObjectURL(blob);
-//         link.download
-//     })
-// }
