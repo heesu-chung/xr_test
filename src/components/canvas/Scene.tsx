@@ -17,11 +17,25 @@ export function Scene() {
 
     const checkMobile = () => {
         let varUA = navigator.userAgent.toLowerCase()
-        setUserAgent(varUA)
-        console.log(varUA)
+        if (varUA.indexOf('android') > -1) {
+            //안드로이드
+            return 'android'
+        } else if (
+            varUA.indexOf('iphone') > -1 ||
+            varUA.indexOf('ipad') > -1 ||
+            varUA.indexOf('ipod') > -1
+        ) {
+            //IOS
+            return 'ios'
+        } else {
+            //아이폰, 안드로이드 외
+            return 'other'
+        }
     }
 
     useEffect(() => {
+        setUserAgent(checkMobile())
+        console.log('checkMobile')
         // arClickRef.current.click()
         // usdzClickRef.current.click()
     }, [])
