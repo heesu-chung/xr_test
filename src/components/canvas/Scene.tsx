@@ -4,7 +4,7 @@ import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useEffect, useRef, useState } from 'react'
 import { ARScreen } from './xr/arScreen'
 import { ARButton } from '@react-three/xr'
-
+import styles from '../../pages/index.module.css'
 import { USDZExporter } from 'three-stdlib'
 
 export function Scene() {
@@ -19,17 +19,14 @@ export function Scene() {
     const checkMobile = () => {
         let varUA = navigator.userAgent.toLowerCase()
         if (varUA.indexOf('android') > -1) {
-            //안드로이드
             return 'android'
         } else if (
             varUA.indexOf('iphone') > -1 ||
             varUA.indexOf('ipad') > -1 ||
             varUA.indexOf('ipod') > -1
         ) {
-            //IOS
             return 'ios'
         } else {
-            //아이폰, 안드로이드 외
             return 'other'
         }
     }
@@ -44,61 +41,19 @@ export function Scene() {
     return (
         <>
             {userAgent === 'android' && (
-                <ARButton
-                    ref={arClickRef}
-                    style={{
-                        position: 'absolute',
-                        zIndex: '99999',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        width: '200px',
-                        height: '40px',
-                        borderRadius: '20px',
-                        border: '2px solid #ccc',
-                    }}
-                >
+                <ARButton ref={arClickRef} className={styles.btn}>
                     AR for Android
                 </ARButton>
             )}
             {userAgent === 'ios' && (
                 <a href={usdz} rel="ar" target="_blank">
-                    <button
-                        ref={usdzClickRef}
-                        style={{
-                            position: 'absolute',
-                            zIndex: '99999',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            width: '200px',
-                            height: '40px',
-                            borderRadius: '20px',
-                            border: '2px solid #ccc',
-                        }}
-                    >
+                    <button ref={usdzClickRef} className={styles.btn}>
                         AR for iOS
                     </button>
                 </a>
             )}
             {userAgent === 'other' && (
-                <button
-                    style={{
-                        position: 'absolute',
-                        zIndex: '99999',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        width: 'auto',
-                        height: '40px',
-                        borderRadius: '20px',
-                        border: '2px solid #ccc',
-                        paddingLeft: '25px',
-                        paddingRight: '25px',
-                    }}
-                >
-                    Not for AR features
-                </button>
+                <button className={styles.btn}>Not for AR features</button>
             )}
 
             <Canvas>
