@@ -39,7 +39,7 @@ export function Model({ setUsdz }: ModelProps) {
     }
 
     useLayoutEffect(() => {
-        getUsdzFile()
+        // getUsdzFile()
 
         scene.traverse((c: any) => {
             if (c.material) {
@@ -77,7 +77,6 @@ export function Model({ setUsdz }: ModelProps) {
     return (
         <>
             <primitive object={scene} scale={0.03} />
-            {/* <primitive object={scene} /> */}
         </>
     )
 }

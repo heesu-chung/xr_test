@@ -10,14 +10,14 @@ interface ARScreenProps {
 export function ARScreen({ setUsdz }: ARScreenProps) {
     return (
         <>
-            {/* <XR referenceSpace="local"> */}
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
-            {/* <Button /> */}
-            <Model setUsdz={setUsdz} />
+            <XR referenceSpace="local">
+                <ambientLight />
+                <pointLight position={[10, 10, 10]} />
+                {/* <Button /> */}
+                <Model setUsdz={setUsdz} />
 
-            {/* <Controllers /> */}
-            {/* </XR> */}
+                {/* <Controllers /> */}
+            </XR>
         </>
     )
 }
