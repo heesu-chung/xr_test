@@ -20,18 +20,16 @@ export function Model({ setUsdz }: ModelProps) {
         const exporter = new USDZExporter()
         const arraybuffer = await exporter.parse(scene)
 
-        console.log(arraybuffer)
-
         const usdz = new Blob([arraybuffer], {
             type: 'application/octet-stream',
         })
-        const link = document.getElementById('link')
+
         const url = URL.createObjectURL(usdz)
         const a = document.createElement('a')
         a.setAttribute('download', 'usdzExport.usdz')
         a.href = url
+        a.click()
         setUsdz(url)
-        // a.click()
     }
 
     useLayoutEffect(() => {

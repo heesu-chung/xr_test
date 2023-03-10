@@ -10,8 +10,8 @@ import { USDZExporter } from 'three-stdlib'
 export function Scene() {
     const arClickRef = useRef<HTMLButtonElement>(null!)
     const usdzClickRef = useRef<HTMLButtonElement>(null!)
-    // const [usdz, setUsdz] = useState('/usdz/Smart_Watch_KW_19.usdz')
-    const [usdz, setUsdz] = useState('')
+    const [usdz, setUsdz] = useState('/usdz/Smart_Watch_KW_19.usdz')
+    // const [usdz, setUsdz] = useState('')
     const [userAgent, setUserAgent] = useState('')
 
     const [btnClicked, setBtnClicked] = useState(false)
@@ -55,9 +55,9 @@ export function Scene() {
             )}
             {userAgent === 'ios' && (
                 <a href={usdz} rel="ar" target="_blank">
-                    <button ref={usdzClickRef} className={styles.btn}>
-                        AR for iOS
-                    </button>
+                    <ARButton ref={usdzClickRef} className={styles.btn}>
+                        AR for iOs
+                    </ARButton>
                 </a>
             )}
             {userAgent === 'other' && (
