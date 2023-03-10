@@ -1,7 +1,7 @@
 import { Box, OrbitControls } from '@react-three/drei'
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
-import { ARButton, useXR, XR } from '@react-three/xr'
-import { useEffect, useRef } from 'react'
+// import { ARButton, XR } from '@react-three/xr'
+import { useEffect, useRef, useState } from 'react'
 import { ARScreen } from './xr/arScreen'
 
 import { USDZExporter } from 'three-stdlib'
@@ -10,9 +10,20 @@ export function Scene() {
     const arClickRef = useRef<HTMLButtonElement>(null!)
     const usdzClickRef = useRef<HTMLAnchorElement>(null!)
 
+    // const [usdzLink, setUsdzLink] = useState('/usdz/Smart_Watch_KW_19.usdz')
+    const [usdz, setUsdz] = useState('')
+
+    const [userAgent, setUserAgent] = useState('')
+
+    const checkMobile = () => {
+        let varUA = navigator.userAgent.toLowerCase()
+        setUserAgent(varUA)
+        console.log(varUA)
+    }
+
     useEffect(() => {
         // arClickRef.current.click()
-        usdzClickRef.current.click()
+        // usdzClickRef.current.click()
     }, [])
 
     return (
@@ -30,7 +41,7 @@ export function Scene() {
                 exitOnly={true}
             /> */}
 
-            <ARButton
+            {/* <ARButton
                 ref={arClickRef}
                 style={{
                     position: 'absolute',
@@ -43,19 +54,14 @@ export function Scene() {
                     borderRadius: '20px',
                     border: '2px solid #ccc',
                 }}
-            />
+            /> */}
 
-            <a
-                ref={usdzClickRef}
-                href="/usdz/Smart_Watch_KW_19.usdz"
-                rel="ar"
-                target="_blank"
-            >
-                USDZ File
+            <a ref={usdzClickRef} href={usdz} rel="ar" target="_blank">
+                {userAgent}
             </a>
 
             <Canvas>
-                <ARScreen />
+                <ARScreen setUsdz={setUsdz} />
             </Canvas>
         </>
     )

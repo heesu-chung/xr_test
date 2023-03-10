@@ -1,14 +1,46 @@
 import { useGLTF } from '@react-three/drei'
-import { useLayoutEffect } from 'react'
+import { useThree } from '@react-three/fiber'
+import { useEffect, useLayoutEffect } from 'react'
 import { MeshPhysicalMaterial } from 'three'
+import { USDZExporter } from 'three-stdlib'
 
-export function Model() {
+interface ModelProps {
+    setUsdz: React.Dispatch<React.SetStateAction<string>>
+}
+
+export function Model({ setUsdz }: ModelProps) {
     // const { scene } = useGLTF('/gltf/city.glb')
     // const { scene } = useGLTF('/gltf/iphone_13_pro.glb') // simple geometry with texture
     const { scene } = useGLTF('/gltf/nike_air.glb') // complex geometry with texture
     // const { scene } = useGLTF('/gltf/smart_watch.glb') // low-quality
 
+    const { gl } = useThree()
+
+    const getUsdzFile = async () => {
+        const exporter = new USDZExporter()
+        const arraybuffer = await exporter.parse(scene)
+
+        const usdz = new Blob([arraybuffer], {
+            type: 'application/octet-stream',
+        })
+
+        console.log(usdz)
+
+        console.log(URL.createObjectURL(usdz))
+
+        gl.domElement.toBlob((blob: any) => {
+            const url = URL.createObjectURL(blob)
+            const a = document.createElement('a')
+            a.setAttribute('download', 'usdzExport.usdz')
+            a.href = url
+            // a.click()
+            // a.href = a.click()
+        })
+    }
+
     useLayoutEffect(() => {
+        getUsdzFile()
+
         scene.traverse((c: any) => {
             if (c.material) {
                 const material = c.material
