@@ -11,8 +11,8 @@ export function Scene() {
     const usdzClickRef = useRef<HTMLAnchorElement>(null!)
 
     useEffect(() => {
-        // clickRef.current.click()
-        usdzClickRef.current.click()
+        arClickRef.current.click()
+        // usdzClickRef.current.click()
     }, [])
 
     return (
