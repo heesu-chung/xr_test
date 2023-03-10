@@ -10,11 +10,11 @@ import { USDZExporter } from 'three-stdlib'
 export function Scene() {
     const arClickRef = useRef<HTMLButtonElement>(null!)
     const usdzClickRef = useRef<HTMLButtonElement>(null!)
-
-    const [usdz, setUsdz] = useState('/usdz/Smart_Watch_KW_19.usdz')
-    // const [usdz, setUsdz] = useState('')
-
+    // const [usdz, setUsdz] = useState('/usdz/Smart_Watch_KW_19.usdz')
+    const [usdz, setUsdz] = useState('')
     const [userAgent, setUserAgent] = useState('')
+
+    const [btnClicked, setBtnClicked] = useState(false)
 
     const checkMobile = () => {
         let varUA = navigator.userAgent.toLowerCase()
@@ -31,12 +31,20 @@ export function Scene() {
         }
     }
 
+    const onClick = () => {
+        setBtnClicked(true)
+    }
+
     useEffect(() => {
         setUserAgent(checkMobile())
 
         // arClickRef.current.click()
         // usdzClickRef.current.click()
     }, [])
+
+    useEffect(() => {
+        console.log(usdz)
+    }, [usdz])
 
     return (
         <>
@@ -53,12 +61,19 @@ export function Scene() {
                 </a>
             )}
             {userAgent === 'other' && (
-                <button className={styles.btn}>Not for AR features</button>
+                <button
+                    ref={arClickRef}
+                    className={styles.btn}
+                    onClick={onClick}
+                >
+                    Not for AR features
+                </button>
             )}
-
-            <Canvas>
-                <ARScreen setUsdz={setUsdz} />
-            </Canvas>
+            {btnClicked && (
+                <Canvas>
+                    <ARScreen setUsdz={setUsdz} />
+                </Canvas>
+            )}
         </>
     )
 }

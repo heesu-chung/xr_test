@@ -20,26 +20,22 @@ export function Model({ setUsdz }: ModelProps) {
         const exporter = new USDZExporter()
         const arraybuffer = await exporter.parse(scene)
 
+        console.log(arraybuffer)
+
         const usdz = new Blob([arraybuffer], {
             type: 'application/octet-stream',
         })
-
-        console.log(usdz)
-
-        console.log(URL.createObjectURL(usdz))
-
-        gl.domElement.toBlob((blob: any) => {
-            const url = URL.createObjectURL(blob)
-            const a = document.createElement('a')
-            a.setAttribute('download', 'usdzExport.usdz')
-            a.href = url
-            // a.click()
-            // a.href = a.click()
-        })
+        const link = document.getElementById('link')
+        const url = URL.createObjectURL(usdz)
+        const a = document.createElement('a')
+        a.setAttribute('download', 'usdzExport.usdz')
+        a.href = url
+        setUsdz(url)
+        a.click()
     }
 
     useLayoutEffect(() => {
-        // getUsdzFile()
+        getUsdzFile()
 
         scene.traverse((c: any) => {
             if (c.material) {
