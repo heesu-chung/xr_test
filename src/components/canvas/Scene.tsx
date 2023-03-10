@@ -61,7 +61,7 @@ export function Scene() {
                     AR for Android
                 </ARButton>
             )}
-            {userAgent === 'iOS' && (
+            {userAgent === 'ios' && (
                 <a href={usdz} rel="ar" target="_blank">
                     <button
                         ref={usdzClickRef}
@@ -80,6 +80,25 @@ export function Scene() {
                         AR for iOS
                     </button>
                 </a>
+            )}
+            {userAgent === 'other' && (
+                <button
+                    style={{
+                        position: 'absolute',
+                        zIndex: '99999',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 'auto',
+                        height: '40px',
+                        borderRadius: '20px',
+                        border: '2px solid #ccc',
+                        paddingLeft: '25px',
+                        paddingRight: '25px',
+                    }}
+                >
+                    Not for AR features
+                </button>
             )}
 
             <Canvas>
