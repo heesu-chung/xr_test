@@ -34,18 +34,11 @@ export function Model({ setUsdz }: ModelProps) {
 
         // a.click()
 
-        // localStorage.setItem('usdzExport.usdz', url)
-
-        console.log(arraybuffer)
-        console.log(usdz)
-        console.log(url)
-
-        const newUsdz = url
         // setUsdz(url)
     }
 
     useLayoutEffect(() => {
-        getUsdzFile()
+        // getUsdzFile()
 
         scene.traverse((c: any) => {
             if (c.material) {

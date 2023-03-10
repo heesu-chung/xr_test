@@ -52,10 +52,11 @@ export function Scene() {
             )}
             {userAgent === 'ios' && (
                 <>
-                    <ARButton ref={usdzClickRef} className={styles.btn}>
-                        AR for iOs
-                    </ARButton>
-                    <a href={usdz} rel="ar" target="_blank"></a>
+                    <a href={usdz} rel="ar" target="_blank">
+                        <ARButton ref={usdzClickRef} className={styles.btn}>
+                            AR for iOs
+                        </ARButton>
+                    </a>
                 </>
             )}
             {userAgent === 'other' && (
@@ -67,11 +68,9 @@ export function Scene() {
                     Not for AR features
                 </button>
             )}
-            {btnClicked && userAgent === 'android' && (
-                <Canvas>
-                    <ARScreen setUsdz={setUsdz} />
-                </Canvas>
-            )}
+            <Canvas>
+                <ARScreen setUsdz={setUsdz} />
+            </Canvas>
         </>
     )
 }
