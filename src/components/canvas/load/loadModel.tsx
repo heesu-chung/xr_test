@@ -31,7 +31,7 @@ export function Model({ setUsdz }: ModelProps) {
         a.setAttribute('download', 'usdzExport.usdz')
         a.href = url
         setUsdz(url)
-        a.click()
+        // a.click()
     }
 
     useLayoutEffect(() => {
