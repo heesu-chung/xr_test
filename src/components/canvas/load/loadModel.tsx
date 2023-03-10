@@ -25,10 +25,20 @@ export function Model({ setUsdz }: ModelProps) {
         })
 
         const url = URL.createObjectURL(usdz)
+
         const a = document.createElement('a')
         a.setAttribute('download', 'usdzExport.usdz')
-        a.href = url
+        a.setAttribute('rel', 'ar')
+        a.setAttribute('target', '_blank')
+        a.setAttribute('href', url)
+
         a.click()
+
+        console.log(arraybuffer)
+        console.log(usdz)
+        console.log(url)
+
+        const newUsdz = url
         setUsdz(url)
     }
 

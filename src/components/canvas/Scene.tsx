@@ -37,13 +37,10 @@ export function Scene() {
 
     useEffect(() => {
         setUserAgent(checkMobile())
-
-        // arClickRef.current.click()
-        // usdzClickRef.current.click()
     }, [])
 
     useEffect(() => {
-        console.log(usdz)
+        // console.log(usdz)
     }, [usdz])
 
     return (
@@ -54,11 +51,12 @@ export function Scene() {
                 </ARButton>
             )}
             {userAgent === 'ios' && (
-                <a href={usdz} rel="ar" target="_blank">
+                <>
                     <ARButton ref={usdzClickRef} className={styles.btn}>
                         AR for iOs
                     </ARButton>
-                </a>
+                    {<a href={usdz} rel="ar" target="_blank"></a>}
+                </>
             )}
             {userAgent === 'other' && (
                 <button
