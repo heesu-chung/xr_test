@@ -26,14 +26,15 @@
     left: 5%;
     width: 50px;
     height: 50px;
+    background: none;
 }
 
 .rightDash {
     position: absolute;
     top: 0;
     left: 0;
-    width: 50px;
-    height: 3px;
+    width: 35px;
+    height: 2px;
     background-color: black;
     transform: rotate(-45deg);
 }
@@ -42,8 +43,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 50px;
-    height: 3px;
+    width: 35px;
+    height: 2px;
     background-color: black;
     transform: rotate(45deg);
 }
