@@ -24,8 +24,6 @@ export function Model({ setUsdz }: ModelProps) {
             type: 'application/octet-stream',
         })
 
-        console.log(usdz)
-
         const url = URL.createObjectURL(usdz)
         const a = document.querySelector('.ios-usdz') as HTMLAnchorElement
 

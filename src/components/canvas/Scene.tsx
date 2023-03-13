@@ -52,12 +52,7 @@ export function Scene() {
             )}
             {userAgent === 'ios' && (
                 <>
-                    <a
-                        // href={`${usdzDefault}.usdz`}
-                        rel="ar"
-                        target="_self"
-                        className="ios-usdz"
-                    >
+                    <a href="" rel="ar" target="_self" className="ios-usdz">
                         <ARButton
                             ref={usdzClickRef}
                             className={styles.btn}
@@ -69,13 +64,7 @@ export function Scene() {
                 </>
             )}
             {userAgent === 'other' && (
-                <a
-                    // href={`${usdzDefault}.usdz`}
-                    href=""
-                    rel="ar"
-                    target="_self"
-                    className="ios-usdz"
-                >
+                <a href="" rel="ar" target="_self" className="ios-usdz">
                     <ARButton
                         className={styles.btn}
                         onClick={() => setBtnClicked(true)}
