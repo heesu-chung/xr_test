@@ -53,7 +53,7 @@ export function Scene() {
             {userAgent === 'ios' && (
                 <>
                     <a
-                        href={`${usdzDefault}.usdz`}
+                        // href={`${usdzDefault}.usdz`}
                         rel="ar"
                         target="_self"
                         className="ios-usdz"
@@ -70,7 +70,8 @@ export function Scene() {
             )}
             {userAgent === 'other' && (
                 <a
-                    href={`${usdzDefault}.usdz`}
+                    // href={`${usdzDefault}.usdz`}
+                    href=""
                     rel="ar"
                     target="_self"
                     className="ios-usdz"

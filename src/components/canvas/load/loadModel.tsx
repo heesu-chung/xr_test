@@ -24,9 +24,11 @@ export function Model({ setUsdz }: ModelProps) {
             type: 'application/octet-stream',
         })
 
+        console.log(usdz)
+
         const url = URL.createObjectURL(usdz)
-        const a = document.createElement('a')
-        // const a = document.querySelector('.ios-usdz')
+        // const a = document.createElement('a')
+        const a = document.querySelector('.ios-usdz') as HTMLAnchorElement
 
         if (a) {
             a.setAttribute('rel', 'ar')
@@ -34,10 +36,11 @@ export function Model({ setUsdz }: ModelProps) {
             a.setAttribute('href', `${url}`)
             // a.setAttribute('download', 'usdzExport.usdz')
             a.click()
+            console.log(url)
 
-            // const usdzFile = new File([usdz], 'usdzExport.usdz', {
-            //     type: usdz.type,
-            // })
+            const usdzFile = new File([usdz], 'usdzExport.usdz', {
+                type: usdz.type,
+            })
 
             // localStorage.setItem('usdzFile', JSON.stringify(usdzFile))
         }
