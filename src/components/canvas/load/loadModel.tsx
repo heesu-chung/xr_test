@@ -9,10 +9,10 @@ interface ModelProps {
 }
 
 export function Model({ setUsdz }: ModelProps) {
-    // const { scene } = useGLTF('/gltf/city.glb')
+    const { scene } = useGLTF('/gltf/city.glb')
     // const { scene } = useGLTF('/gltf/iphone_13_pro.glb') // simple geometry with texture
     // const { scene } = useGLTF('/gltf/nike_air.glb') // complex geometry with texture
-    const { scene } = useGLTF('/gltf/smart_watch.glb') // low-quality
+    // const { scene } = useGLTF('/gltf/smart_watch.glb') // low-quality
 
     const { gl } = useThree()
 
