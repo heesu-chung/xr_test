@@ -34,16 +34,17 @@ export function Model({ setUsdz }: ModelProps) {
             a.setAttribute('rel', 'ar')
             a.setAttribute('target', '_blank')
 
-            a.setAttribute('href', URL.createObjectURL(usdz))
+            // a.setAttribute('href', URL.createObjectURL(usdz))
             a.setAttribute('href', url)
+            a.click()
 
             // console.log(URL.createObjectURL(usdz))
             // console.log(a)
             // console.log(url)
 
-            const usdzFile = new File([usdz], 'usdzExport.usdz', {
-                type: usdz.type,
-            })
+            // const usdzFile = new File([usdz], 'usdzExport.usdz', {
+            //     type: usdz.type,
+            // })
             // console.log(usdzFile)
             // a.setAttribute('href', 'usdzExport.usdz')
             // a.click()
