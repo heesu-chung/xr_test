@@ -87,12 +87,11 @@ export function Scene() {
                     )}
                 </a>
             )}
-            {btnClicked && (
-                <Canvas>
-                    <ARScreen setUsdz={setUsdz} />
-                    <OrbitControls />
-                </Canvas>
-            )}
+
+            <Canvas>
+                <ARScreen setUsdz={setUsdz} />
+                <OrbitControls />
+            </Canvas>
         </>
     )
 }
