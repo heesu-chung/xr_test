@@ -50,6 +50,16 @@ export function Scene() {
                     AR for Android
                 </ARButton>
             )}
+
+            {userAgent === 'android' && btnClicked && (
+                <button
+                    className={styles.exitBtn}
+                    onClick={() => setBtnClicked(false)}
+                >
+                    <span className={styles.rightDash}></span>
+                    <span className={styles.leftDash}></span>
+                </button>
+            )}
             {userAgent === 'ios' && (
                 <>
                     <a rel="ar" target="_self" className="ios-usdz">
