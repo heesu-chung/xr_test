@@ -10,8 +10,8 @@ import { USDZExporter } from 'three-stdlib'
 export function Scene() {
     const arClickRef = useRef<HTMLButtonElement>(null!)
     const usdzClickRef = useRef<HTMLButtonElement>(null!)
-    const [usdz, setUsdz] = useState('/usdz/usdzExport.usdz')
-    // const [usdz, setUsdz] = useState('')
+    const [usdzDefault, setUsdzDefault] = useState('')
+    const [usdz, setUsdz] = useState('')
     const [userAgent, setUserAgent] = useState('')
 
     const [btnClicked, setBtnClicked] = useState(false)
@@ -39,38 +39,55 @@ export function Scene() {
         setUserAgent(checkMobile())
     }, [])
 
-    useEffect(() => {
-        // console.log(usdz)
-    }, [usdz])
-
     return (
         <>
             {userAgent === 'android' && (
-                <ARButton ref={arClickRef} className={styles.btn}>
+                <ARButton
+                    ref={arClickRef}
+                    className={styles.btn}
+                    onClick={() => setBtnClicked(true)}
+                >
                     AR for Android
                 </ARButton>
             )}
             {userAgent === 'ios' && (
                 <>
-                    <a href={usdz} rel="ar" target="_blank">
-                        <ARButton ref={usdzClickRef} className={styles.btn}>
+                    <a
+                        href={usdzDefault}
+                        rel="ar"
+                        target="_blank"
+                        className="ios-usdz"
+                    >
+                        <ARButton
+                            ref={usdzClickRef}
+                            className={styles.btn}
+                            onClick={() => setBtnClicked(true)}
+                        >
                             AR for iOs
                         </ARButton>
                     </a>
                 </>
             )}
             {userAgent === 'other' && (
-                <button
-                    ref={arClickRef}
-                    className={styles.btn}
-                    onClick={onClick}
+                <a
+                    href={usdzDefault}
+                    rel="ar"
+                    target="_blank"
+                    className="ios-usdz"
                 >
-                    Not for AR features
-                </button>
+                    <ARButton
+                        className={styles.btn}
+                        onClick={() => setBtnClicked(true)}
+                    >
+                        Not for AR features
+                    </ARButton>
+                </a>
             )}
-            <Canvas>
-                <ARScreen setUsdz={setUsdz} />
-            </Canvas>
+            {btnClicked && (
+                <Canvas>
+                    <ARScreen setUsdz={setUsdz} />
+                </Canvas>
+            )}
         </>
     )
 }

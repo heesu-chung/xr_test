@@ -25,20 +25,35 @@ export function Model({ setUsdz }: ModelProps) {
         })
 
         const url = URL.createObjectURL(usdz)
-
+        console.log(url)
         const a = document.createElement('a')
-        a.setAttribute('download', 'usdzExport.usdz')
-        a.setAttribute('rel', 'ar')
-        a.setAttribute('target', '_self')
-        a.setAttribute('href', url)
+        // const a = document.querySelector('.ios-usdz')
 
-        // a.click()
+        if (a) {
+            // a.setAttribute('download', 'usdzExport.usdz')
+            a.setAttribute('rel', 'ar')
+            a.setAttribute('target', '_blank')
 
-        // setUsdz(url)
+            a.setAttribute('href', URL.createObjectURL(usdz))
+            a.setAttribute('href', url)
+
+            // console.log(URL.createObjectURL(usdz))
+            // console.log(a)
+            // console.log(url)
+
+            const usdzFile = new File([usdz], 'usdzExport.usdz', {
+                type: usdz.type,
+            })
+            // console.log(usdzFile)
+            // a.setAttribute('href', 'usdzExport.usdz')
+            // a.click()
+
+            // localStorage.setItem('usdzFile', JSON.stringify(usdzFile))
+        }
     }
 
     useLayoutEffect(() => {
-        // getUsdzFile()
+        getUsdzFile()
 
         scene.traverse((c: any) => {
             if (c.material) {

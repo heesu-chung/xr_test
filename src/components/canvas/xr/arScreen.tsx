@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Controllers, XR } from '@react-three/xr'
 import { Button } from '../interface/button'
 import { Model } from '../load/loadModel'
@@ -8,6 +8,9 @@ interface ARScreenProps {
 }
 
 export function ARScreen({ setUsdz }: ARScreenProps) {
+    useEffect(() => {
+        console.log('render ARScreen')
+    }, [])
     return (
         <>
             <XR referenceSpace="local">
@@ -15,7 +18,6 @@ export function ARScreen({ setUsdz }: ARScreenProps) {
                 <pointLight position={[10, 10, 10]} />
                 {/* <Button /> */}
                 <Model setUsdz={setUsdz} />
-
                 {/* <Controllers /> */}
             </XR>
         </>
