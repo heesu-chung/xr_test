@@ -9,9 +9,9 @@ interface ModelProps {
 }
 
 export function Model({ setUsdz }: ModelProps) {
-    const { scene } = useGLTF('/gltf/city.glb')
+    // const { scene } = useGLTF('/gltf/city.glb')
     // const { scene } = useGLTF('/gltf/iphone_13_pro.glb') // simple geometry with texture
-    // const { scene } = useGLTF('/gltf/nike_air.glb') // complex geometry with texture
+    const { scene } = useGLTF('/gltf/nike_air.glb') // complex geometry with texture
     // const { scene } = useGLTF('/gltf/smart_watch.glb') // low-quality
 
     const { gl } = useThree()
@@ -27,7 +27,6 @@ export function Model({ setUsdz }: ModelProps) {
         console.log(usdz)
 
         const url = URL.createObjectURL(usdz)
-        // const a = document.createElement('a')
         const a = document.querySelector('.ios-usdz') as HTMLAnchorElement
 
         if (a) {
@@ -35,15 +34,7 @@ export function Model({ setUsdz }: ModelProps) {
             a.setAttribute('target', '_self')
             a.setAttribute('href', `${url}`)
             a.setAttribute('download', 'usdzExport.usdz')
-
             a.click()
-            console.log(url)
-
-            // const usdzFile = new File([usdz], 'usdzExport.usdz', {
-            //     type: usdz.type,
-            // })
-
-            // localStorage.setItem('usdzFile', JSON.stringify(usdzFile))
         }
     }
 
