@@ -25,29 +25,19 @@ export function Model({ setUsdz }: ModelProps) {
         })
 
         const url = URL.createObjectURL(usdz)
-        console.log(url)
         const a = document.createElement('a')
         // const a = document.querySelector('.ios-usdz')
 
         if (a) {
-            // a.setAttribute('download', 'usdzExport.usdz')
             a.setAttribute('rel', 'ar')
-            a.setAttribute('target', '_blank')
-
-            // a.setAttribute('href', URL.createObjectURL(usdz))
-            a.setAttribute('href', url)
+            a.setAttribute('target', '_self')
+            a.setAttribute('href', `${url}`)
+            a.setAttribute('download', 'usdzExport.usdz')
             a.click()
-
-            // console.log(URL.createObjectURL(usdz))
-            // console.log(a)
-            // console.log(url)
 
             // const usdzFile = new File([usdz], 'usdzExport.usdz', {
             //     type: usdz.type,
             // })
-            // console.log(usdzFile)
-            // a.setAttribute('href', 'usdzExport.usdz')
-            // a.click()
 
             // localStorage.setItem('usdzFile', JSON.stringify(usdzFile))
         }

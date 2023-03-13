@@ -10,7 +10,7 @@ import { USDZExporter } from 'three-stdlib'
 export function Scene() {
     const arClickRef = useRef<HTMLButtonElement>(null!)
     const usdzClickRef = useRef<HTMLButtonElement>(null!)
-    const [usdzDefault, setUsdzDefault] = useState('')
+    const [usdzDefault, setUsdzDefault] = useState('/usdz/usdzExport.usdz')
     const [usdz, setUsdz] = useState('')
     const [userAgent, setUserAgent] = useState('')
 
@@ -55,7 +55,7 @@ export function Scene() {
                     <a
                         href={usdzDefault}
                         rel="ar"
-                        target="_blank"
+                        target="_self"
                         className="ios-usdz"
                     >
                         <ARButton
@@ -72,7 +72,7 @@ export function Scene() {
                 <a
                     href={usdzDefault}
                     rel="ar"
-                    target="_blank"
+                    target="_self"
                     className="ios-usdz"
                 >
                     <ARButton
