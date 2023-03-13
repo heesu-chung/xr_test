@@ -41,7 +41,7 @@ export function Scene() {
 
     return (
         <>
-            {userAgent === 'android' && (
+            {userAgent === 'android' && !btnClicked && (
                 <ARButton
                     ref={arClickRef}
                     className={styles.btn}
@@ -52,32 +52,36 @@ export function Scene() {
             )}
             {userAgent === 'ios' && (
                 <>
-                    <a href="" rel="ar" target="_self" className="ios-usdz">
-                        <ARButton
-                            ref={usdzClickRef}
-                            className={styles.btn}
-                            onClick={() => setBtnClicked(true)}
-                        >
-                            AR for iOs
-                        </ARButton>
+                    <a rel="ar" target="_self" className="ios-usdz">
+                        {!btnClicked && (
+                            <ARButton
+                                ref={usdzClickRef}
+                                className={styles.btn}
+                                onClick={() => setBtnClicked(true)}
+                            >
+                                AR for iOs
+                            </ARButton>
+                        )}
                     </a>
                 </>
             )}
             {userAgent === 'other' && (
-                <a href="" rel="ar" target="_self" className="ios-usdz">
-                    <ARButton
-                        className={styles.btn}
-                        onClick={() => setBtnClicked(true)}
-                    >
-                        Not for AR features
-                    </ARButton>
+                <a rel="ar" target="_self" className="ios-usdz">
+                    {!btnClicked && (
+                        <ARButton
+                            className={styles.btn}
+                            onClick={() => setBtnClicked(true)}
+                        >
+                            Not for AR features
+                        </ARButton>
+                    )}
                 </a>
             )}
-            {btnClicked && (
-                <Canvas>
-                    <ARScreen setUsdz={setUsdz} />
-                </Canvas>
-            )}
+
+            <Canvas>
+                <ARScreen setUsdz={setUsdz} />
+                <OrbitControls />
+            </Canvas>
         </>
     )
 }

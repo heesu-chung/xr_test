@@ -1,6 +1,6 @@
 import { useGLTF } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
-import { useEffect, useLayoutEffect } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { MeshPhysicalMaterial } from 'three'
 import { USDZExporter } from 'three-stdlib'
 
@@ -14,7 +14,7 @@ export function Model({ setUsdz }: ModelProps) {
     // const { scene } = useGLTF('/gltf/nike_air.glb') // complex geometry with texture
     // const { scene } = useGLTF('/gltf/smart_watch.glb') // low-quality
 
-    const { gl } = useThree()
+    const [deviceOrigin, setDeviceOrigin] = useState('')
 
     const getUsdzFile = async () => {
         const exporter = new USDZExporter()
@@ -26,7 +26,7 @@ export function Model({ setUsdz }: ModelProps) {
 
         const url = URL.createObjectURL(usdz)
         const a = document.querySelector('.ios-usdz') as HTMLAnchorElement
-
+        console.log(a)
         if (a) {
             a.setAttribute('rel', 'ar')
             a.setAttribute('target', '_self')
@@ -36,8 +36,35 @@ export function Model({ setUsdz }: ModelProps) {
         }
     }
 
+    const checkMobile = () => {
+        console.log('checkMobile')
+        let varUA = navigator.userAgent.toLowerCase()
+        if (varUA.indexOf('android') > -1) {
+            return 'android'
+        } else if (
+            varUA.indexOf('iphone') > -1 ||
+            varUA.indexOf('ipad') > -1 ||
+            varUA.indexOf('ipod') > -1
+        ) {
+            return 'ios'
+        } else {
+            return 'other'
+        }
+    }
+
+    useEffect(() => {
+        if (deviceOrigin === 'ios') {
+            console.log('device: ios')
+            getUsdzFile()
+        } else if (deviceOrigin === 'android') {
+            console.log('device: android')
+        } else if (deviceOrigin === 'other') {
+            console.log('device: Not for AR')
+        }
+    }, [deviceOrigin])
+
     useLayoutEffect(() => {
-        getUsdzFile()
+        setDeviceOrigin(checkMobile())
 
         scene.traverse((c: any) => {
             if (c.material) {
@@ -74,7 +101,7 @@ export function Model({ setUsdz }: ModelProps) {
 
     return (
         <>
-            <primitive object={scene} scale={0.03} />
+            <primitive object={scene} />
         </>
     )
 }
