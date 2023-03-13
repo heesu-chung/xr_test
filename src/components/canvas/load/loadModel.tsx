@@ -34,13 +34,14 @@ export function Model({ setUsdz }: ModelProps) {
             a.setAttribute('rel', 'ar')
             a.setAttribute('target', '_self')
             a.setAttribute('href', `${url}`)
-            // a.setAttribute('download', 'usdzExport.usdz')
+            a.setAttribute('download', 'usdzExport.usdz')
+
             a.click()
             console.log(url)
 
-            const usdzFile = new File([usdz], 'usdzExport.usdz', {
-                type: usdz.type,
-            })
+            // const usdzFile = new File([usdz], 'usdzExport.usdz', {
+            //     type: usdz.type,
+            // })
 
             // localStorage.setItem('usdzFile', JSON.stringify(usdzFile))
         }
