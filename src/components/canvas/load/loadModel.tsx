@@ -3,16 +3,21 @@ import { useThree } from '@react-three/fiber'
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { MeshPhysicalMaterial } from 'three'
 import { USDZExporter } from 'three-stdlib'
+import * as THREE from 'three'
 
 interface ModelProps {
     setUsdz: React.Dispatch<React.SetStateAction<string>>
 }
 
 export function Model({ setUsdz }: ModelProps) {
-    // const { scene } = useGLTF('/gltf/city.glb')
-    const { scene } = useGLTF('/gltf/iphone_13_pro.glb') // simple geometry with texture
-    // const { scene } = useGLTF('/gltf/nike_air.glb') // complex geometry with texture
-    // const { scene } = useGLTF('/gltf/smart_watch.glb') // low-quality
+    // const { scene } = useGLTF('/gltf/sofa.glb') //
+    // const { scene } = useGLTF('/gltf/city.glb') //
+    // const { scene } = useGLTF('/gltf/mug.glb')
+    // const { scene } = useGLTF('/gltf/laptop.glb')
+    // const { scene } = useGLTF('/gltf/casual_watch.glb') // face disappear
+    // const { scene } = useGLTF('/gltf/iphone_13_pro.glb') // face flipped
+    const { scene } = useGLTF('/gltf/nike_air.glb') // ok
+    // const { scene } = useGLTF('/gltf/smart_watch.glb') // face disappear
 
     const [deviceOrigin, setDeviceOrigin] = useState('')
 
@@ -26,18 +31,24 @@ export function Model({ setUsdz }: ModelProps) {
 
         const url = URL.createObjectURL(usdz)
         const a = document.querySelector('.ios-usdz') as HTMLAnchorElement
-        console.log(a)
-        if (a) {
-            a.setAttribute('rel', 'ar')
-            a.setAttribute('target', '_self')
-            a.setAttribute('href', `${url}`)
-            a.setAttribute('download', 'usdzExport.usdz')
-            a.click()
-        }
+        const aTag = document.createElement('a')
+
+        // if (a) {
+        //     a.setAttribute('rel', 'ar')
+        //     a.setAttribute('target', '_self')
+        //     a.setAttribute('href', `${url}`)
+        //     a.setAttribute('download', 'usdzExport.usdz')
+        //     a.click()
+        // }
+        aTag.setAttribute('download', 'usdzExport.usdz')
+        aTag.setAttribute('rel', 'ar')
+        aTag.setAttribute('target', '_blank')
+        aTag.setAttribute('href', url)
+
+        aTag.click()
     }
 
     const checkMobile = () => {
-        console.log('checkMobile')
         let varUA = navigator.userAgent.toLowerCase()
         if (varUA.indexOf('android') > -1) {
             return 'android'
@@ -60,43 +71,20 @@ export function Model({ setUsdz }: ModelProps) {
             console.log('device: android')
         } else if (deviceOrigin === 'other') {
             console.log('device: Not for AR')
+            getUsdzFile()
         }
     }, [deviceOrigin])
 
     useLayoutEffect(() => {
-        setDeviceOrigin(checkMobile())
-
         scene.traverse((c: any) => {
-            if (c.material) {
-                const material = c.material
-                if (material.opacity < 0.65 && material.opacity > 0.2) {
-                    const newMaterial: any = new MeshPhysicalMaterial()
-                    for (const key in material) {
-                        if (key in material) {
-                            if (material[key] === null) {
-                                continue
-                            }
-
-                            if (material[key].isTexture) {
-                                newMaterial[key] = material[key]
-                            } else if (
-                                material[key].copy &&
-                                material[key].constructor ===
-                                    newMaterial[key].constructor
-                            ) {
-                                newMaterial[key].copy(material[key])
-                            } else if (typeof material[key] === 'number') {
-                                newMaterial[key] = material[key]
-                            }
-                        }
-                    }
-
-                    newMaterial.opacity = 1.0
-                    newMaterial.transmission = 1.0
-                    c.material = newMaterial
-                }
+            if (c instanceof THREE.Mesh) {
+                c.updateMatrix()
+                c.updateMatrixWorld()
+                // c.material.side = THREE.BackSide
             }
         })
+
+        setDeviceOrigin(checkMobile())
     }, [scene])
 
     return (
