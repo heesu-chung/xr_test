@@ -16,7 +16,7 @@ export function Model({ setUsdz }: ModelProps) {
     // const { scene } = useGLTF('/gltf/laptop.glb')
     // const { scene } = useGLTF('/gltf/casual_watch.glb') // face disappear
     // const { scene } = useGLTF('/gltf/iphone_13_pro.glb') // face flipped
-    const { scene } = useGLTF('/gltf/nike_air.glb') // ok
+    const { scene } = useGLTF('/gltf/ar_test.glb') // ok
     // const { scene } = useGLTF('/gltf/smart_watch.glb') // face disappear
 
     const [deviceOrigin, setDeviceOrigin] = useState('')

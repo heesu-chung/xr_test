@@ -95,3 +95,19 @@ export function Scene() {
         </>
     )
 }
+
+{
+    /* {userAgent === 'android' && (
+        <ARButton onClick={() => setBtnClicked(true)}>AR for Android</ARButton>
+      )}
+      {userAgent === 'ios' && (
+        <>
+          <a rel="ar" target="_self" className="ios-usdz">
+            <ARButton onClick={() => setBtnClicked(true)}>AR for iOS</ARButton>
+          </a>
+        </>
+      )}
+      {userAgent === 'etc' && (
+        <ARButton onClick={() => console.log('on click')}>AR</ARButton>
+      )} */
+}
